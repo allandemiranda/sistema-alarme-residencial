@@ -14,14 +14,14 @@ Desenvolvido por [Allan de Miranda Silva](http://allandemiranda.eti.br/) aluno d
 
 Atualizado em: 21 de julho de 2020
 
-# O que há de novo
+## O que há de novo
 
 - EM DESENVOLVIMENTO !
 
-## Descrição
+### Descrição
 
 Um sistema de alerta é qualquer sistema de natureza técnica ou biológica, empregado por um indivíduo ou grupo de indivíduos, para informar sobre um possível perigo futuro. O objetivo de qualquer sistema de alerta é permitir ao seu usuário ou usuários tomar as providências necessárias para diminuir ou eliminar um perigo iminente. Alertas não são efetivos a não ser que as pessoas reajam a eles.
 
-# Licença
+## Licença
 
 > Copyright (c) 2020 ALLAN DE MIRANDA SILVA
