@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de serviços para o Alarme",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25",
+    "serialport": "^9.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allandemiranda/sistema-alarme-residencial.git"
+  },
+  "keywords": [
+    "alarme"
+  ],
+  "author": "Allan de Miranda Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/allandemiranda/sistema-alarme-residencial/issues"
+  },
+  "homepage": "https://github.com/allandemiranda/sistema-alarme-residencial#readme"
+}
