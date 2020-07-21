@@ -1,2 +1,7 @@
-# sistema-alarme-residencial
-Sistema de alarme residencial
+# API
+
+https://mongoosejs.com/
+
+https://expressjs.com/pt-br/
+
+https://serialport.io/
