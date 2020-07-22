@@ -25,14 +25,15 @@ const double toleranceBetweenSensorVoltage = 0.18;  //! Voltagem de tolerância 
 
 /**
  * @brief Função para verificar as configuraçoes da voltagem dos sensores do alarme
+ * 
  * @param bothSensor Voltagem esperada para ambos os sensores estarem fechados
  * @param oddSensor Voltagem esperada para somente o sensor ímpar está fechado (par aberto)
  * @param evenSensor Voltagem esperada para somente o sensor par está fechado (ímpar aberto)
  * @param offSensor Voltagem esperada para ambos os sensores estarem abertos
  * @param tolerance Voltagem de tolerância do normal
  * @param newVoltageConst Constante para verificar voltagem do pin
- * 
- * @return Teste bem sucedido
+ * @return true Teste bem sucedido
+ * @return false Teste apresenta erro
  */
 bool expectedVoltagesSensorConf(const double bothSensor, const double oddSensor, const double evenSensor, const double offSensor, const double tolerance, const double newVoltageConst) {
   if (normalVoltageBothSensor > normalVoltageOddSensor) {
@@ -71,9 +72,9 @@ bool expectedVoltagesSensorConf(const double bothSensor, const double oddSensor,
 
 /**
  * @brief Função para verificar Voltagem na Zona do Alarme
- * @param zoneNumber Número da zona do alarme
  * 
- * @return Voltagem da zona em 3 análizes consecultivas no pin
+ * @param zoneNumber Número da zona do alarme
+ * @return double Voltagem da zona
  */
 double checkZoneVoltage(const short zoneNumber) {
   double firstVal;  //! Primeiro valor recebido
@@ -150,12 +151,19 @@ double checkZoneVoltage(const short zoneNumber) {
 
 /**
  * @brief Função para verificar Status da Zona do Alarme
- * @param zoneNumber Número da zona do alarme
  * 
- * @return Status da Zona do Alarme
+ * @param voltage Voltagem capturada da zona enteriormente checkZoneVoltage()
+ * @param zoneNumber Caso não tenha a voltagem (-1), expecificar a zona a ser analizada
+ * @return String Status da Zona do Alarme
  */
-String checkZoneStatus(const short zoneNumber) {
-  const double voltage = checkZoneVoltage(zoneNumber);  //! Voltagem na zona
+String checkZoneStatus(double voltage = -1, const short zoneNumber = 0) {
+  if (voltage < 0) {
+    if (zoneNumber > 0) {
+      voltage = checkZoneVoltage(zoneNumber);
+    } else {
+      return "Erro ao checar o status da Zona";
+    }
+  }
 
   if (voltage == normalVoltageBothSensor) {
     return "Voltagem esperada para ambos os sensores estarem fechados";
@@ -225,9 +233,115 @@ String checkZoneStatus(const short zoneNumber) {
 }
 
 /**
+ * @brief Função para verificar se o sensor esta aberto (disparado) ou fechado
+ * 
+ * @param sensorNumber Número so sensor para analizar
+ * @return true Sensor esta fechado
+ * @return false Sensor está aberto
+ */
+bool checkSensorStatus(const short sensorNumber) {
+  int pinZone;
+  double voltage;
+
+  switch (sensorNumber) {
+    case 1:
+      pinZone = pinZone1;
+      break;
+    case 2:
+      pinZone = pinZone1;
+      break;
+    case 3:
+      pinZone = pinZone2;
+      break;
+    case 4:
+      pinZone = pinZone2;
+      break;
+    case 5:
+      pinZone = pinZone3;
+      break;
+    case 6:
+      pinZone = pinZone3;
+      break;
+    case 7:
+      pinZone = pinZone4;
+      break;
+    case 8:
+      pinZone = pinZone4;
+      break;
+    default:
+      return true;  //! Impossivel tratar este erro aqui
+  }
+
+  if ((sensorNumber % 2) != 0) {
+    while (true) {
+      voltage = checkZoneVoltage(pinZone);
+
+      while (voltage < 0.0) {
+        voltage = checkZoneVoltage(pinZone);
+      }
+
+      if (voltage <= (normalVoltageBothSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageBothSensor - toleranceBetweenSensorVoltage)) {
+          return true;
+        }
+      }
+
+      if (voltage <= (normalVoltageOddSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageOddSensor - toleranceBetweenSensorVoltage)) {
+          return true;
+        }
+      }
+
+      if (voltage <= (normalVoltageEvenSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageEvenSensor - toleranceBetweenSensorVoltage)) {
+          return false;
+        }
+      }
+
+      if (voltage >= normalVoltageOffSensor) {
+        if (voltage <= (normalVoltageOffSensor + toleranceBetweenSensorVoltage)) {
+          return false;
+        }
+      }
+    }
+  } else {
+    while (true) {
+      voltage = checkZoneVoltage(pinZone);
+
+      while (voltage < 0.0) {
+        voltage = checkZoneVoltage(pinZone);
+      }
+
+      if (voltage <= (normalVoltageBothSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageBothSensor - toleranceBetweenSensorVoltage)) {
+          return true;
+        }
+      }
+
+      if (voltage <= (normalVoltageOddSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageOddSensor - toleranceBetweenSensorVoltage)) {
+          return false;
+        }
+      }
+
+      if (voltage <= (normalVoltageEvenSensor + toleranceBetweenSensorVoltage)) {
+        if (voltage >= (normalVoltageEvenSensor - toleranceBetweenSensorVoltage)) {
+          return true;
+        }
+      }
+
+      if (voltage >= normalVoltageOffSensor) {
+        if (voltage <= (normalVoltageOffSensor + toleranceBetweenSensorVoltage)) {
+          return false;
+        }
+      }
+    }
+  }
+}
+
+/**
  * @brief Verifia eventos de entrada na comunicação serial
  * 
- * @return void
  */
 void serialEvent() {
   incomingByte = Serial.read();
@@ -240,7 +354,6 @@ void serialEvent() {
 /**
  * @brief Função padrão da linguagem para tesets e inicialização de métodos
  * 
- * @return void
  */
 void setup() {
   // Led Status
@@ -261,7 +374,6 @@ void setup() {
 /**
  * @brief Função padrão da linguagem para continuidade do sistema
  * 
- * @return void
  */
 void loop() {
   // put your main code here, to run repeatedly:
