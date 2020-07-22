@@ -2,7 +2,7 @@
  * @brief Gerenciador da placa do alarme
  * @author Allan de Miranda
  * @file sketch_alarme.ino
- * @version 1.0.1
+ * @version 1.0.3
  *
  * @license Copyright (c) 2020 ALLAN DE MIRANDA SILVA
  */
