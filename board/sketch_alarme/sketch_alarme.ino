@@ -2,7 +2,7 @@
  * @brief Gerenciador da placa do alarme
  * @author Allan de Miranda
  * @file sketch_alarme.ino
- * @version 1.0.3
+ * @version 1.0.4
  *
  * @license Copyright (c) 2020 ALLAN DE MIRANDA SILVA
  */
@@ -36,38 +36,38 @@ const double toleranceBetweenSensorVoltage = 0.18;  //! Voltagem de tolerância 
  * @return false Teste apresenta erro
  */
 bool expectedVoltagesSensorConf(const double bothSensor, const double oddSensor, const double evenSensor, const double offSensor, const double tolerance, const double newVoltageConst) {
+  // Verificar se as voltagens são escalares
+  double toleranceZone = tolerance + tolerance;  //! Zona de tolerância entre Sensores
   if (normalVoltageBothSensor > normalVoltageOddSensor) {
-    double test = normalVoltageBothSensor - normalVoltageOddSensor;
-    if (test <= (tolerance + tolerance)) {
+    if ((normalVoltageBothSensor - normalVoltageOddSensor) <= toleranceZone) {
       return false;
+    } else {
+      if (normalVoltageOddSensor > normalVoltageEvenSensor) {
+        if ((normalVoltageOddSensor - normalVoltageEvenSensor) <= toleranceZone) {
+          return false;
+        } else {
+          if (normalVoltageEvenSensor > normalVoltageOffSensor) {
+            if ((normalVoltageEvenSensor - normalVoltageOffSensor) <= toleranceZone) {
+              return false;
+            }
+          } else {
+            return false;
+          }
+        }
+      } else {
+        return false;
+      }
     }
   } else {
     return false;
   }
 
-  if (normalVoltageOddSensor > normalVoltageEvenSensor) {
-    double test = normalVoltageOddSensor - normalVoltageEvenSensor;
-    if (test <= (tolerance + tolerance)) {
-      return false;
-    }
-  } else {
+  // Verificar se a contante de calculo da voltagem é válida
+  if ((newVoltageConst >= 1) || (newVoltageConst <= 0)) {
     return false;
   }
 
-  if (normalVoltageEvenSensor > normalVoltageOffSensor) {
-    double test = normalVoltageEvenSensor - normalVoltageOffSensor;
-    if (test <= (tolerance + tolerance)) {
-      return false;
-    }
-  } else {
-    return false;
-  }
-
-  if (newVoltageConst <= 0) {
-    return false;
-  }
-
-  return true;
+  return true;  //! Os testes foram aprovados
 }
 
 /**
@@ -78,59 +78,53 @@ bool expectedVoltagesSensorConf(const double bothSensor, const double oddSensor,
  */
 double checkZoneVoltage(const short zoneNumber) {
   double firstVal;  //! Primeiro valor recebido
-  int val;
+  int val;          //! Voltagem em 10bit do pino de entrada
   double nowVal;
 
   // Obtenha o primeiro valor base
   switch (zoneNumber) {
     case 1:
-      val = analogRead(pinZone1);     //! Lê o pino de entrada
-      firstVal = val * voltageConst;  //! Converte para voltagem
+      val = analogRead(pinZone1);  //! Lê a Voltagem em 10bit do pino de entrada
       break;
     case 2:
-      val = analogRead(pinZone2);     //! Lê o pino de entrada
-      firstVal = val * voltageConst;  //! Converte para voltagem
+      val = analogRead(pinZone2);  //! Lê a Voltagem em 10bit do pino de entrada
       break;
     case 3:
-      val = analogRead(pinZone3);     //! Lê o pino de entrada
-      firstVal = val * voltageConst;  //! Converte para voltagem
+      val = analogRead(pinZone3);  //! Lê a Voltagem em 10bit do pino de entrada
       break;
     case 4:
-      val = analogRead(pinZone4);     //! Lê o pino de entrada
-      firstVal = val * voltageConst;  //! Converte para voltagem
+      val = analogRead(pinZone4);  //! Lê a Voltagem em 10bit do pino de entrada
       break;
     default:
-      firstVal = -1;  //! Zona inexistente
+      return -1;  //! Zona inexistente
   }
 
+  firstVal = val * voltageConst;  //! Converte para voltagem
+
+  // Loop de verificações congruentes de voltagem em 3 etapas
   bool flag = false;  //! Flag verificadora do segundo parametro congruente
-
-  // Loop de verificações congruentes de 3 etapas
   while (true) {
-    delay(250);  //! Delay para minimizar valores inconsistentes
-
-    double nowVal;  //! Voltagem atual na zona
+    delay(150);           //! Delay para minimizar valores inconsistentes
+    double nowVal = 0.0;  //! Voltagem atual na zona
 
     switch (zoneNumber) {
       case 1:
-        val = analogRead(pinZone1);   //! Lê o pino de entrada
-        nowVal = val * voltageConst;  //! Converte para voltagem
+        val = analogRead(pinZone1);  //! Lê a Voltagem em 10bit do pino de entrada
         break;
       case 2:
-        val = analogRead(pinZone2);   //! Lê o pino de entrada
-        nowVal = val * voltageConst;  //! Converte para voltagem
+        val = analogRead(pinZone2);  //! Lê a Voltagem em 10bit do pino de entrada
         break;
       case 3:
-        val = analogRead(pinZone3);   //! Lê o pino de entrada
-        nowVal = val * voltageConst;  //! Converte para voltagem
+        val = analogRead(pinZone3);  //! Lê a Voltagem em 10bit do pino de entrada
         break;
       case 4:
-        val = analogRead(pinZone4);   //! Lê o pino de entrada
-        nowVal = val * voltageConst;  //! Converte para voltagem
+        val = analogRead(pinZone4);  //! Lê a Voltagem em 10bit do pino de entrada
         break;
       default:
         nowVal = -1;  //! Zona inexistente
     }
+
+    nowVal = val * voltageConst;  //! Converte para voltagem
 
     // Verifica se o valor atual bate com o anterior
     if (nowVal == firstVal) {
@@ -152,18 +146,85 @@ double checkZoneVoltage(const short zoneNumber) {
 /**
  * @brief Função para verificar Status da Zona do Alarme
  * 
- * @param voltage Voltagem capturada da zona enteriormente checkZoneVoltage()
- * @param zoneNumber Caso não tenha a voltagem (-1), expecificar a zona a ser analizada
+ * @param voltage Voltagem capturada da zona [checkZoneVoltage()]
  * @return String Status da Zona do Alarme
  */
-String checkZoneStatus(double voltage = -1, const short zoneNumber = 0) {
-  if (voltage < 0) {
-    if (zoneNumber > 0) {
-      voltage = checkZoneVoltage(zoneNumber);
+String checkZoneStatusByVoltage(const double voltage) {
+  if (voltage == normalVoltageBothSensor) {
+    return "Voltagem esperada para ambos os sensores estarem fechados";
+  }
+
+  if (voltage == normalVoltageOddSensor) {
+    return "Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
+  }
+
+  if (voltage == normalVoltageEvenSensor) {
+    return "Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+  }
+
+  if (voltage == normalVoltageOffSensor) {
+    return "Voltagem esperada para ambos os sensores estarem abertos";
+  }
+
+  if (voltage > normalVoltageOddSensor) {
+    if (voltage <= (normalVoltageOddSensor + toleranceBetweenSensorVoltage)) {
+      return "Sobre Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
     } else {
-      return "Erro ao checar o status da Zona";
+      if (voltage < (normalVoltageBothSensor - toleranceBetweenSensorVoltage)) {
+        return "Voltagem da Zona fora do padrão, entre ÍMPAR e AMBOS";
+      } else {
+        if (voltage < normalVoltageBothSensor) {
+          return "Sub Voltagem esperada para ambos os sensores estarem fechados";
+        } else {
+          if (voltage <= (normalVoltageBothSensor + toleranceBetweenSensorVoltage)) {
+            return "Sobre Voltagem esperada para ambos os sensores estarem fechados";
+          } else {
+            return "Sobre carga na zona";
+          }
+        }
+      }
+    }
+  } else {
+    if (voltage >= (normalVoltageOddSensor - toleranceBetweenSensorVoltage)) {
+      return "Sub Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
+    } else {
+      if (voltage > (normalVoltageEvenSensor + toleranceBetweenSensorVoltage)) {
+        return "Voltagem da Zona fora do padrão, entre PAR e ÍMPAR";
+      } else {
+        if (voltage > normalVoltageEvenSensor) {
+          return "Sobre Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+        } else {
+          if (voltage >= (normalVoltageEvenSensor - toleranceBetweenSensorVoltage)) {
+            return "Sub Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+          } else {
+            if (voltage > (normalVoltageOffSensor + toleranceBetweenSensorVoltage)) {
+              return "Voltagem da Zona fora do padrão, entre OFF e PAR";
+            } else {
+              if (voltage > normalVoltageOffSensor) {
+                return "Sobre Voltagem esperada para ambos os sensores estarem abertos";
+              } else {
+                if ((voltage < normalVoltageOffSensor) & (voltage <= 0)) {
+                  return "Sub Voltagem esperada para ambos os sensores estarem abertos";
+                } else {
+                  return "Erro ao coletar voltagem da Zona, menor de 0.00v";
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
+}
+
+/**
+ * @brief Função para verificar Status da Zona do Alarme
+ * 
+ * @param zoneNumber Expecificar número da zona a ser analizada
+ * @return String Status da Zona do Alarme
+ */
+String checkZoneStatusByVoltageByZone(const short zoneNumber) {
+  const double voltage = checkZoneVoltage(zoneNumber);  //! Voltagem da Zona
 
   if (voltage == normalVoltageBothSensor) {
     return "Voltagem esperada para ambos os sensores estarem fechados";
@@ -237,7 +298,7 @@ String checkZoneStatus(double voltage = -1, const short zoneNumber = 0) {
  * 
  * @param sensorNumber Número so sensor para analizar
  * @return true Sensor esta fechado
- * @return false Sensor está aberto
+ * @return false Sensor está aberto (barreira cortada)
  */
 bool checkSensorStatus(const short sensorNumber) {
   int pinZone;
@@ -269,9 +330,10 @@ bool checkSensorStatus(const short sensorNumber) {
       pinZone = pinZone4;
       break;
     default:
-      return true;  //! Impossivel tratar este erro aqui
+      return true;  //! Cliente solicitou um Sensor que não existe
   }
 
+  // Verifique a atividade do Sensor da Zona
   if ((sensorNumber % 2) != 0) {
     while (true) {
       voltage = checkZoneVoltage(pinZone);
