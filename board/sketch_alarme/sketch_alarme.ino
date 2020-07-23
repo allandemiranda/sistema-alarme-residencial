@@ -9,6 +9,7 @@
 
 int incomingByte = 0;                     //! Dados recebidos na porta serial
 const double voltageConst = 0.004882813;  //! Constante para verificar voltagem do pin
+short statusLedNumber = 0;                //! Código do status do Alarme
 
 // Sirene do Alarme
 const int pinBuzzer = 13;   //! Porta do relé da sirene
@@ -124,8 +125,6 @@ double checkZoneVoltage(const short zoneNumber) {
       case 4:
         val = analogRead(pinZone4);  //! Lê a Voltagem em 10bit do pino de entrada
         break;
-      default:
-        nowVal = -1;  //! Zona inexistente
     }
 
     nowVal = val * voltageConst;  //! Converte para voltagem
@@ -154,6 +153,8 @@ double checkZoneVoltage(const short zoneNumber) {
  * @return String Status da Zona do Alarme
  */
 String checkZoneStatusByVoltage(const double voltage) {
+  statusTableLed(0);
+
   if (voltage == normalVoltageBothSensor) {
     return "Voltagem esperada para ambos os sensores estarem fechados";
   }
@@ -169,6 +170,8 @@ String checkZoneStatusByVoltage(const double voltage) {
   if (voltage == normalVoltageOffSensor) {
     return "Voltagem esperada para ambos os sensores estarem abertos";
   }
+
+  statusTableLed(2);
 
   if (voltage > normalVoltageOddSensor) {
     if (voltage <= (normalVoltageOddSensor + toleranceBetweenSensorVoltage)) {
@@ -230,6 +233,8 @@ String checkZoneStatusByVoltage(const double voltage) {
 String checkZoneStatusByVoltageByZone(const short zoneNumber) {
   const double voltage = checkZoneVoltage(zoneNumber);  //! Voltagem da Zona
 
+  statusTableLed(0);
+
   if (voltage == normalVoltageBothSensor) {
     return "Voltagem esperada para ambos os sensores estarem fechados";
   }
@@ -245,6 +250,8 @@ String checkZoneStatusByVoltageByZone(const short zoneNumber) {
   if (voltage == normalVoltageOffSensor) {
     return "Voltagem esperada para ambos os sensores estarem abertos";
   }
+
+  statusTableLed(2);
 
   if (voltage > normalVoltageOddSensor) {
     if (voltage <= (normalVoltageOddSensor + toleranceBetweenSensorVoltage)) {
@@ -474,6 +481,44 @@ void turnOffAlarmBuzzer() {
 }
 
 /**
+ * @brief Função pra gerenciar o led de status do alarme
+ * 
+ * @param statusNumber Número da tabela de status
+ */
+void statusTableLed(const short statusNumber = statusLedNumber) {
+  statusLedNumber = statusNumber;
+  digitalWrite(LED_BUILTIN, LOW);
+  int time;  //! Tempo entre o blink
+
+  // Tabela de status
+  switch (statusNumber) {
+    case 0:
+      // Tudo funcionando coretamente
+      time = 2000;
+      break;
+    case 1:
+      // Configuraçoes de inicialização com erro
+      time = 150;
+      break;
+    case 2:
+      // Voltagem fora da margem em alguma Zona
+      time = 900;
+      break;
+    default:
+      time = 0;
+  }
+
+  if (time != 0) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(time);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(time);
+  } else {
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+}
+
+/**
  * @brief Verifia eventos de entrada na comunicação serial
  * 
  */
@@ -499,11 +544,9 @@ void setup() {
 
   // Testes
   while (!expectedVoltagesSensorConf(normalVoltageBothSensor, normalVoltageOddSensor, normalVoltageEvenSensor, normalVoltageOffSensor, toleranceBetweenSensorVoltage, voltageConst)) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(300);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(300);
+    statusTableLed(1);  //! Atua o led de status
   }
+  statusTableLed(0);
 }
 
 /**
@@ -511,5 +554,5 @@ void setup() {
  * 
  */
 void loop() {
-  // put your main code here, to run repeatedly:
+  statusTableLed();  //! Verifica o código operante e atua o led de status
 }
