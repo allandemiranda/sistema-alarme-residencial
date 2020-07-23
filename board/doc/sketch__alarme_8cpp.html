@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Arduino: Referência ao ficheiro sketch_alarme.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Arduino
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('sketch__alarme_8cpp.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a> &#124;
+<a href="#var-members">Variáveis</a>  </div>
+  <div class="headertitle">
+<div class="title">Referência ao ficheiro sketch_alarme.ino</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:a2af90bb3cbe790e669a1824b516598cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a2af90bb3cbe790e669a1824b516598cc">expectedVoltagesSensorConf</a> (const double bothSensor, const double oddSensor, const double evenSensor, const double offSensor, const double tolerance, const double newVoltageConst)</td></tr>
+<tr class="memdesc:a2af90bb3cbe790e669a1824b516598cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltagem de tolerância do normal.  <a href="#a2af90bb3cbe790e669a1824b516598cc">Mais...</a><br /></td></tr>
+<tr class="separator:a2af90bb3cbe790e669a1824b516598cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48645a32011d0f0e284dd5e6cb2da5c9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a48645a32011d0f0e284dd5e6cb2da5c9">checkZoneVoltage</a> (const short zoneNumber)</td></tr>
+<tr class="memdesc:a48645a32011d0f0e284dd5e6cb2da5c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função para verificar Voltagem na Zona do Alarme.  <a href="#a48645a32011d0f0e284dd5e6cb2da5c9">Mais...</a><br /></td></tr>
+<tr class="separator:a48645a32011d0f0e284dd5e6cb2da5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff4cfb904822ceff6af77f5cff9e23c5"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#aff4cfb904822ceff6af77f5cff9e23c5">checkZoneStatus</a> (double voltage=-1, const short zoneNumber=0)</td></tr>
+<tr class="memdesc:aff4cfb904822ceff6af77f5cff9e23c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função para verificar Status da Zona do Alarme.  <a href="#aff4cfb904822ceff6af77f5cff9e23c5">Mais...</a><br /></td></tr>
+<tr class="separator:aff4cfb904822ceff6af77f5cff9e23c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03dd67e04c86582dfa62ae1c4a37fd90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a03dd67e04c86582dfa62ae1c4a37fd90">checkSensorStatus</a> (const short sensorNumber)</td></tr>
+<tr class="memdesc:a03dd67e04c86582dfa62ae1c4a37fd90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função para verificar se o sensor esta aberto (disparado) ou fechado.  <a href="#a03dd67e04c86582dfa62ae1c4a37fd90">Mais...</a><br /></td></tr>
+<tr class="separator:a03dd67e04c86582dfa62ae1c4a37fd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa11606a63bbe57842b51321e714a8daf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#aa11606a63bbe57842b51321e714a8daf">serialEvent</a> ()</td></tr>
+<tr class="memdesc:aa11606a63bbe57842b51321e714a8daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifia eventos de entrada na comunicação serial.  <a href="#aa11606a63bbe57842b51321e714a8daf">Mais...</a><br /></td></tr>
+<tr class="separator:aa11606a63bbe57842b51321e714a8daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função padrão da linguagem para tesets e inicialização de métodos.  <a href="#a4fc01d736fe50cf5b977f755b675f11d">Mais...</a><br /></td></tr>
+<tr class="separator:a4fc01d736fe50cf5b977f755b675f11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função padrão da linguagem para continuidade do sistema.  <a href="#afe461d27b9c48d5921c00d521181f12f">Mais...</a><br /></td></tr>
+<tr class="separator:afe461d27b9c48d5921c00d521181f12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variáveis</h2></td></tr>
+<tr class="memitem:ae563354a0218546aca0b276f84a85755"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#ae563354a0218546aca0b276f84a85755">incomingByte</a> = 0</td></tr>
+<tr class="separator:ae563354a0218546aca0b276f84a85755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c8b1809fb749e317df8bd458c3c9f5b"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a7c8b1809fb749e317df8bd458c3c9f5b">voltageConst</a> = 0.004882813</td></tr>
+<tr class="memdesc:a7c8b1809fb749e317df8bd458c3c9f5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dados recebidos na porta serial.  <a href="#a7c8b1809fb749e317df8bd458c3c9f5b">Mais...</a><br /></td></tr>
+<tr class="separator:a7c8b1809fb749e317df8bd458c3c9f5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81dccbb92f956b8b79e92bdc3e311385"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a81dccbb92f956b8b79e92bdc3e311385">pinZone1</a> = A0</td></tr>
+<tr class="memdesc:a81dccbb92f956b8b79e92bdc3e311385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constante para verificar voltagem do pin.  <a href="#a81dccbb92f956b8b79e92bdc3e311385">Mais...</a><br /></td></tr>
+<tr class="separator:a81dccbb92f956b8b79e92bdc3e311385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93ce6c5e803c244d0ea4cbe5b516be5a"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a93ce6c5e803c244d0ea4cbe5b516be5a">pinZone2</a> = A1</td></tr>
+<tr class="memdesc:a93ce6c5e803c244d0ea4cbe5b516be5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zona Um dos sensores 1 e 2.  <a href="#a93ce6c5e803c244d0ea4cbe5b516be5a">Mais...</a><br /></td></tr>
+<tr class="separator:a93ce6c5e803c244d0ea4cbe5b516be5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54007bd137dffa2f73af95dd9d95f21d"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a54007bd137dffa2f73af95dd9d95f21d">pinZone3</a> = A2</td></tr>
+<tr class="memdesc:a54007bd137dffa2f73af95dd9d95f21d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zona Dois dos sensores 3 e 4.  <a href="#a54007bd137dffa2f73af95dd9d95f21d">Mais...</a><br /></td></tr>
+<tr class="separator:a54007bd137dffa2f73af95dd9d95f21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2172858b7872c6b03cab91222053613"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#ab2172858b7872c6b03cab91222053613">pinZone4</a> = A3</td></tr>
+<tr class="memdesc:ab2172858b7872c6b03cab91222053613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zona Três dos sensores 5 e 6.  <a href="#ab2172858b7872c6b03cab91222053613">Mais...</a><br /></td></tr>
+<tr class="separator:ab2172858b7872c6b03cab91222053613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a90be3eb8a25e369cdfd2ca63e190d6"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a4a90be3eb8a25e369cdfd2ca63e190d6">normalVoltageBothSensor</a> = 3.08</td></tr>
+<tr class="memdesc:a4a90be3eb8a25e369cdfd2ca63e190d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zona Quantro dos sensores 7 e 8.  <a href="#a4a90be3eb8a25e369cdfd2ca63e190d6">Mais...</a><br /></td></tr>
+<tr class="separator:a4a90be3eb8a25e369cdfd2ca63e190d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ff5f99f4ea159a57312297f1aad22a"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#ab6ff5f99f4ea159a57312297f1aad22a">normalVoltageOddSensor</a> = 2.59</td></tr>
+<tr class="memdesc:ab6ff5f99f4ea159a57312297f1aad22a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltagem esperada para ambos os sensores estarem fechados.  <a href="#ab6ff5f99f4ea159a57312297f1aad22a">Mais...</a><br /></td></tr>
+<tr class="separator:ab6ff5f99f4ea159a57312297f1aad22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae8669bae3243256461f22d4321e6609"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#aae8669bae3243256461f22d4321e6609">normalVoltageEvenSensor</a> = 1.64</td></tr>
+<tr class="memdesc:aae8669bae3243256461f22d4321e6609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltagem esperada para somente o sensor ímpar está fechado (par aberto)  <a href="#aae8669bae3243256461f22d4321e6609">Mais...</a><br /></td></tr>
+<tr class="separator:aae8669bae3243256461f22d4321e6609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad91fc6e465b3f96f0da40c970d1269ab"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#ad91fc6e465b3f96f0da40c970d1269ab">normalVoltageOffSensor</a> = 0.00</td></tr>
+<tr class="memdesc:ad91fc6e465b3f96f0da40c970d1269ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltagem esperada para somente o sensor par está fechado (ímpar aberto)  <a href="#ad91fc6e465b3f96f0da40c970d1269ab">Mais...</a><br /></td></tr>
+<tr class="separator:ad91fc6e465b3f96f0da40c970d1269ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a3de4bfe00a1aa4e474aeef9056505"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sketch__alarme_8cpp.html#a64a3de4bfe00a1aa4e474aeef9056505">toleranceBetweenSensorVoltage</a> = 0.18</td></tr>
+<tr class="memdesc:a64a3de4bfe00a1aa4e474aeef9056505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Voltagem esperada para ambos os sensores estarem abertos.  <a href="#a64a3de4bfe00a1aa4e474aeef9056505">Mais...</a><br /></td></tr>
+<tr class="separator:a64a3de4bfe00a1aa4e474aeef9056505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="a03dd67e04c86582dfa62ae1c4a37fd90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03dd67e04c86582dfa62ae1c4a37fd90">&#9670;&nbsp;</a></span>checkSensorStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool checkSensorStatus </td>
+          <td>(</td>
+          <td class="paramtype">const short&#160;</td>
+          <td class="paramname"><em>sensorNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função para verificar se o sensor esta aberto (disparado) ou fechado. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sensorNumber</td><td>Número so sensor para analizar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>true Sensor esta fechado </dd>
+<dd>
+false Sensor está aberto </dd></dl>
+<p>Impossivel tratar este erro aqui </p>
+<div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="sketch__alarme_8cpp_a03dd67e04c86582dfa62ae1c4a37fd90_cgraph.png" border="0" usemap="#sketch__alarme_8cpp_a03dd67e04c86582dfa62ae1c4a37fd90_cgraph" alt=""/></div>
+<map name="sketch__alarme_8cpp_a03dd67e04c86582dfa62ae1c4a37fd90_cgraph" id="sketch__alarme_8cpp_a03dd67e04c86582dfa62ae1c4a37fd90_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff4cfb904822ceff6af77f5cff9e23c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff4cfb904822ceff6af77f5cff9e23c5">&#9670;&nbsp;</a></span>checkZoneStatus()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String checkZoneStatus </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>voltage</em> = <code>-1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const short&#160;</td>
+          <td class="paramname"><em>zoneNumber</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função para verificar Status da Zona do Alarme. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">voltage</td><td>Voltagem capturada da zona enteriormente <a class="el" href="sketch__alarme_8cpp.html#a48645a32011d0f0e284dd5e6cb2da5c9" title="Função para verificar Voltagem na Zona do Alarme. ">checkZoneVoltage()</a> </td></tr>
+    <tr><td class="paramname">zoneNumber</td><td>Caso não tenha a voltagem (-1), expecificar a zona a ser analizada </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>String Status da Zona do Alarme </dd></dl>
+<div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="sketch__alarme_8cpp_aff4cfb904822ceff6af77f5cff9e23c5_cgraph.png" border="0" usemap="#sketch__alarme_8cpp_aff4cfb904822ceff6af77f5cff9e23c5_cgraph" alt=""/></div>
+<map name="sketch__alarme_8cpp_aff4cfb904822ceff6af77f5cff9e23c5_cgraph" id="sketch__alarme_8cpp_aff4cfb904822ceff6af77f5cff9e23c5_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="a48645a32011d0f0e284dd5e6cb2da5c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48645a32011d0f0e284dd5e6cb2da5c9">&#9670;&nbsp;</a></span>checkZoneVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double checkZoneVoltage </td>
+          <td>(</td>
+          <td class="paramtype">const short&#160;</td>
+          <td class="paramname"><em>zoneNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função para verificar Voltagem na Zona do Alarme. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">zoneNumber</td><td>Número da zona do alarme </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>double Voltagem da zona </dd></dl>
+<p>Primeiro valor recebido</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Zona inexistente</p>
+<p>Flag verificadora do segundo parametro congruente</p>
+<p>Delay para minimizar valores inconsistentes</p>
+<p>Voltagem atual na zona</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Lê o pino de entrada</p>
+<p>Converte para voltagem</p>
+<p>Zona inexistente </p>
+<div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="sketch__alarme_8cpp_a48645a32011d0f0e284dd5e6cb2da5c9_icgraph.png" border="0" usemap="#sketch__alarme_8cpp_a48645a32011d0f0e284dd5e6cb2da5c9_icgraph" alt=""/></div>
+<map name="sketch__alarme_8cpp_a48645a32011d0f0e284dd5e6cb2da5c9_icgraph" id="sketch__alarme_8cpp_a48645a32011d0f0e284dd5e6cb2da5c9_icgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2af90bb3cbe790e669a1824b516598cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2af90bb3cbe790e669a1824b516598cc">&#9670;&nbsp;</a></span>expectedVoltagesSensorConf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool expectedVoltagesSensorConf </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>bothSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>oddSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>evenSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>offSensor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>tolerance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>newVoltageConst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Voltagem de tolerância do normal. </p>
+<p>Função para verificar as configuraçoes da voltagem dos sensores do alarme</p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bothSensor</td><td>Voltagem esperada para ambos os sensores estarem fechados </td></tr>
+    <tr><td class="paramname">oddSensor</td><td>Voltagem esperada para somente o sensor ímpar está fechado (par aberto) </td></tr>
+    <tr><td class="paramname">evenSensor</td><td>Voltagem esperada para somente o sensor par está fechado (ímpar aberto) </td></tr>
+    <tr><td class="paramname">offSensor</td><td>Voltagem esperada para ambos os sensores estarem abertos </td></tr>
+    <tr><td class="paramname">tolerance</td><td>Voltagem de tolerância do normal </td></tr>
+    <tr><td class="paramname">newVoltageConst</td><td>Constante para verificar voltagem do pin </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>true Teste bem sucedido </dd>
+<dd>
+false Teste apresenta erro </dd></dl>
+<div class="dynheader">
+Este é o diagrama das funções que utilizam esta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="sketch__alarme_8cpp_a2af90bb3cbe790e669a1824b516598cc_icgraph.png" border="0" usemap="#sketch__alarme_8cpp_a2af90bb3cbe790e669a1824b516598cc_icgraph" alt=""/></div>
+<map name="sketch__alarme_8cpp_a2af90bb3cbe790e669a1824b516598cc_icgraph" id="sketch__alarme_8cpp_a2af90bb3cbe790e669a1824b516598cc_icgraph">
+</map>
+</div>
+
+</div>
+</div>
+<a id="afe461d27b9c48d5921c00d521181f12f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe461d27b9c48d5921c00d521181f12f">&#9670;&nbsp;</a></span>loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void loop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função padrão da linguagem para continuidade do sistema. </p>
+
+</div>
+</div>
+<a id="aa11606a63bbe57842b51321e714a8daf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa11606a63bbe57842b51321e714a8daf">&#9670;&nbsp;</a></span>serialEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void serialEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifia eventos de entrada na comunicação serial. </p>
+
+</div>
+</div>
+<a id="a4fc01d736fe50cf5b977f755b675f11d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fc01d736fe50cf5b977f755b675f11d">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função padrão da linguagem para tesets e inicialização de métodos. </p>
+<p>Abre a porta serial com taxa de 9600 bps </p>
+<div class="dynheader">
+Grafo de chamadas desta função:</div>
+<div class="dyncontent">
+<div class="center"><img src="sketch__alarme_8cpp_a4fc01d736fe50cf5b977f755b675f11d_cgraph.png" border="0" usemap="#sketch__alarme_8cpp_a4fc01d736fe50cf5b977f755b675f11d_cgraph" alt=""/></div>
+<map name="sketch__alarme_8cpp_a4fc01d736fe50cf5b977f755b675f11d_cgraph" id="sketch__alarme_8cpp_a4fc01d736fe50cf5b977f755b675f11d_cgraph">
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Documentação das variáveis</h2>
+<a id="ae563354a0218546aca0b276f84a85755"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae563354a0218546aca0b276f84a85755">&#9670;&nbsp;</a></span>incomingByte</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int incomingByte = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a90be3eb8a25e369cdfd2ca63e190d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a90be3eb8a25e369cdfd2ca63e190d6">&#9670;&nbsp;</a></span>normalVoltageBothSensor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double normalVoltageBothSensor = 3.08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zona Quantro dos sensores 7 e 8. </p>
+
+</div>
+</div>
+<a id="aae8669bae3243256461f22d4321e6609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae8669bae3243256461f22d4321e6609">&#9670;&nbsp;</a></span>normalVoltageEvenSensor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double normalVoltageEvenSensor = 1.64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Voltagem esperada para somente o sensor ímpar está fechado (par aberto) </p>
+
+</div>
+</div>
+<a id="ab6ff5f99f4ea159a57312297f1aad22a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ff5f99f4ea159a57312297f1aad22a">&#9670;&nbsp;</a></span>normalVoltageOddSensor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double normalVoltageOddSensor = 2.59</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Voltagem esperada para ambos os sensores estarem fechados. </p>
+
+</div>
+</div>
+<a id="ad91fc6e465b3f96f0da40c970d1269ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad91fc6e465b3f96f0da40c970d1269ab">&#9670;&nbsp;</a></span>normalVoltageOffSensor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double normalVoltageOffSensor = 0.00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Voltagem esperada para somente o sensor par está fechado (ímpar aberto) </p>
+
+</div>
+</div>
+<a id="a81dccbb92f956b8b79e92bdc3e311385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81dccbb92f956b8b79e92bdc3e311385">&#9670;&nbsp;</a></span>pinZone1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int pinZone1 = A0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constante para verificar voltagem do pin. </p>
+
+</div>
+</div>
+<a id="a93ce6c5e803c244d0ea4cbe5b516be5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ce6c5e803c244d0ea4cbe5b516be5a">&#9670;&nbsp;</a></span>pinZone2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int pinZone2 = A1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zona Um dos sensores 1 e 2. </p>
+
+</div>
+</div>
+<a id="a54007bd137dffa2f73af95dd9d95f21d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54007bd137dffa2f73af95dd9d95f21d">&#9670;&nbsp;</a></span>pinZone3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int pinZone3 = A2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zona Dois dos sensores 3 e 4. </p>
+
+</div>
+</div>
+<a id="ab2172858b7872c6b03cab91222053613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2172858b7872c6b03cab91222053613">&#9670;&nbsp;</a></span>pinZone4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int pinZone4 = A3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zona Três dos sensores 5 e 6. </p>
+
+</div>
+</div>
+<a id="a64a3de4bfe00a1aa4e474aeef9056505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a3de4bfe00a1aa4e474aeef9056505">&#9670;&nbsp;</a></span>toleranceBetweenSensorVoltage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double toleranceBetweenSensorVoltage = 0.18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Voltagem esperada para ambos os sensores estarem abertos. </p>
+
+</div>
+</div>
+<a id="a7c8b1809fb749e317df8bd458c3c9f5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c8b1809fb749e317df8bd458c3c9f5b">&#9670;&nbsp;</a></span>voltageConst</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double voltageConst = 0.004882813</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dados recebidos na porta serial. </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="sketch__alarme_8cpp.html">sketch_alarme.ino</a></li>
+    <li class="footer">Gerado por
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>
