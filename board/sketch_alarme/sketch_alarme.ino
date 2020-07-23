@@ -2,13 +2,17 @@
  * @brief Gerenciador da placa do alarme
  * @author Allan de Miranda
  * @file sketch_alarme.ino
- * @version 1.0.4
+ * @version 1.0.5
  *
  * @license Copyright (c) 2020 ALLAN DE MIRANDA SILVA
  */
 
 int incomingByte = 0;                     //! Dados recebidos na porta serial
 const double voltageConst = 0.004882813;  //! Constante para verificar voltagem do pin
+
+// Sirene do Alarme
+const int pinBuzzer = 13;   //! Porta do relé da sirene
+bool statusBuzzer = false;  //! Status inicial da sirene
 
 // Zonas do alarme
 const int pinZone1 = A0;  //! Zona Um dos sensores 1 e 2
@@ -402,6 +406,74 @@ bool checkSensorStatus(const short sensorNumber) {
 }
 
 /**
+ * @brief Função com o status da Sirene
+ * 
+ * @return true Sirene alarmando
+ * @return false Sirene desativada
+ */
+bool checkBuzzerStatus() {
+  return statusBuzzer;
+}
+
+/**
+ * @brief Função para disparar a Sirene
+ * 
+ */
+void activateBuzzer() {
+  if (!checkBuzzerStatus()) {
+    digitalWrite(pinBuzzer, HIGH);
+    statusBuzzer = true;
+  }
+}
+
+/**
+ * @brief Função para cortar a Sirene
+ * 
+ */
+void deactivateBuzzer() {
+  if (checkBuzzerStatus()) {
+    digitalWrite(pinBuzzer, LOW);
+    statusBuzzer = false;
+  }
+}
+
+/**
+ * @brief Função para soar sinal de Ligar na Sirene
+ * 
+ */
+void turnOnAlarmBuzzer() {
+  // Corta sirene se ela estiver alarmando
+  if (checkBuzzerStatus()) {
+    digitalWrite(pinBuzzer, LOW);
+    statusBuzzer = false;
+    delay(300);
+  }
+
+  // Soa o sinal de Ligar
+  digitalWrite(pinBuzzer, HIGH);
+  delay(250);
+  digitalWrite(pinBuzzer, LOW);
+}
+
+/**
+ * @brief Função para soar sinal de Desligar na Sirene
+ * 
+ */
+void turnOffAlarmBuzzer() {
+  // Corta sirene se ela estiver alarmando
+  if (checkBuzzerStatus()) {
+    digitalWrite(pinBuzzer, LOW);
+    statusBuzzer = false;
+    delay(300);
+  }
+
+  // Soa o sinal de Desligar
+  digitalWrite(pinBuzzer, HIGH);
+  delay(500);
+  digitalWrite(pinBuzzer, LOW);
+}
+
+/**
  * @brief Verifia eventos de entrada na comunicação serial
  * 
  */
@@ -418,8 +490,12 @@ void serialEvent() {
  * 
  */
 void setup() {
-  // Led Status
-  pinMode(LED_BUILTIN, OUTPUT);
+  // Pin Setup
+  pinMode(LED_BUILTIN, OUTPUT);  //! Led de status
+  pinMode(pinBuzzer, OUTPUT);    //! Sirene do Alarme
+
+  // Inicializações
+  Serial.begin(9600);  //! Abre a porta serial com taxa de 9600 bps
 
   // Testes
   while (!expectedVoltagesSensorConf(normalVoltageBothSensor, normalVoltageOddSensor, normalVoltageEvenSensor, normalVoltageOffSensor, toleranceBetweenSensorVoltage, voltageConst)) {
@@ -428,9 +504,6 @@ void setup() {
     digitalWrite(LED_BUILTIN, LOW);
     delay(300);
   }
-
-  // Inicializações
-  Serial.begin(9600);  //! Abre a porta serial com taxa de 9600 bps
 }
 
 /**
