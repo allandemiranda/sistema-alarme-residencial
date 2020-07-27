@@ -14,62 +14,88 @@
 
 class Led {
  private:
-  short pinNumber;
-  bool statusLed = false;
+  short pinNumber;  //! Porta de saída
+  bool statusLed;   //! Status atual do led
+  short getPinNumber(void);
+  void setPinNumber(const short);
+  void setStatus(const bool);
 
  public:
-  Led(const short);
-  bool turnOn(void);
-  bool turnOff(void);
-  bool status(void);
+  Led(const short, const bool);
+  void turnOn(void);
+  void turnOff(void);
+  bool getStatus(void);
 };
 
 /**
  * @brief Construct a new Led Status:: Led Status object
  * 
  * @param pin Porta do Led
+ * @param statusNow Status inicial do led
  */
-Led::Led(const short pin) {
-  pinNumber = pin;
-  pinMode(pinNumber, OUTPUT);
+Led::Led(const short pin, const bool statusNow = false) {
+  setPinNumber(pin);
+  setStatus(statusNow);
+  pinMode(getPinNumber(), OUTPUT);
 }
 
 /**
- * @brief Ligar o Led
+ * @brief Ligar led
  * 
- * @return true Se o led estiver ligado
- * @return false Se o led estiver desligado
  */
-bool Led::turnOn(void) {
-  if (!statusLed) {
-    digitalWrite(pinNumber, HIGH);
-    statusLed = true;
+void Led::turnOn(void) {
+  if (!getStatus()) {
+    digitalWrite(getPinNumber(), HIGH);
+    setStatus(true);
   }
-  return statusLed;
 }
 
 /**
  * @brief Desligar o Led
  * 
- * @return true Se o led estiver ligado
- * @return false Se o led estiver desligado
  */
-bool Led::turnOff(void) {
-  if (statusLed) {
-    digitalWrite(pinNumber, LOW);
-    statusLed = false;
+void Led::turnOff(void) {
+  if (getStatus()) {
+    digitalWrite(getPinNumber(), LOW);
+    setStatus(false);
   }
+}
+
+/**
+ * @brief Get the Status object
+ * 
+ * @return true Led ligado
+ * @return false Led desligado
+ */
+bool Led::getStatus(void) {
   return statusLed;
 }
 
 /**
- * @brief Status do led
+ * @brief Set the Status object
  * 
- * @return true Se estiver ligado
- * @return false Se estiver desligado
+ * @param newStatus Novo status do led
  */
-bool Led::status(void) {
-  return statusLed;
+void Led::setStatus(const bool newStatus) {
+  statusLed = newStatus;
+}
+
+/**
+ * @brief Get the Pin Number object
+ * 
+ * @return short Número da porta do led
+ */
+short Led::getPinNumber(void) {
+  return pinNumber;
+}
+
+/**
+ * @brief Set the Pin Number object
+ * 
+ * @param newPin Novo número da porta do led
+ */
+void Led::setPinNumber(const short newPin) {
+  pinNumber = newPin;
 }
 
 #endif
