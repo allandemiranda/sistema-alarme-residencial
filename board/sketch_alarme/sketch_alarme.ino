@@ -7,6 +7,8 @@
  * @license Copyright (c) 2020 ALLAN DE MIRANDA SILVA
  */
 
+#include "ArduinoJson-v6.15.2.h"
+
 int incomingByte = 0;                     //! Dados recebidos na porta serial
 const double voltageConst = 0.004882813;  //! Constante para verificar voltagem do pin
 short statusLedNumber = 0;                //! Código do status do Alarme
@@ -144,6 +146,44 @@ double checkZoneVoltage(const short zoneNumber) {
   }
 
   return firstVal;
+}
+
+/**
+ * @brief Função pra gerenciar o led de status do alarme
+ * 
+ * @param statusNumber Número da tabela de status
+ */
+void statusTableLed(const short statusNumber = statusLedNumber) {
+  statusLedNumber = statusNumber;
+  digitalWrite(LED_BUILTIN, LOW);
+  int time;  //! Tempo entre o blink
+
+  // Tabela de status
+  switch (statusNumber) {
+    case 0:
+      // Tudo funcionando coretamente
+      time = 2000;
+      break;
+    case 1:
+      // Configuraçoes de inicialização com erro
+      time = 150;
+      break;
+    case 2:
+      // Voltagem fora da margem em alguma Zona
+      time = 900;
+      break;
+    default:
+      time = 0;
+  }
+
+  if (time != 0) {
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(time);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(time);
+  } else {
+    digitalWrite(LED_BUILTIN, LOW);
+  }
 }
 
 /**
@@ -478,44 +518,6 @@ void turnOffAlarmBuzzer() {
   digitalWrite(pinBuzzer, HIGH);
   delay(500);
   digitalWrite(pinBuzzer, LOW);
-}
-
-/**
- * @brief Função pra gerenciar o led de status do alarme
- * 
- * @param statusNumber Número da tabela de status
- */
-void statusTableLed(const short statusNumber = statusLedNumber) {
-  statusLedNumber = statusNumber;
-  digitalWrite(LED_BUILTIN, LOW);
-  int time;  //! Tempo entre o blink
-
-  // Tabela de status
-  switch (statusNumber) {
-    case 0:
-      // Tudo funcionando coretamente
-      time = 2000;
-      break;
-    case 1:
-      // Configuraçoes de inicialização com erro
-      time = 150;
-      break;
-    case 2:
-      // Voltagem fora da margem em alguma Zona
-      time = 900;
-      break;
-    default:
-      time = 0;
-  }
-
-  if (time != 0) {
-    digitalWrite(LED_BUILTIN, HIGH);
-    delay(time);
-    digitalWrite(LED_BUILTIN, LOW);
-    delay(time);
-  } else {
-    digitalWrite(LED_BUILTIN, LOW);
-  }
 }
 
 /**
