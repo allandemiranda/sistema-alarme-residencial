@@ -1,0 +1,95 @@
+{
+    "sirene":{
+        "status": true
+    },
+    "controle":{
+        "status": false
+    },
+    "ledStatus":{
+        "status": "uma msg aqui"
+    },
+    "sensores": [
+        {
+            "numero": 1,
+            "status": true
+        },
+        {
+            "numero": 2,
+            "status": true
+        },
+        {
+            "numero": 3,
+            "status": true
+        },
+        {
+            "numero": 4,
+            "status": true
+        },
+        {
+            "numero": 5,
+            "status": true
+        },
+        {
+            "numero": 6,
+            "status": true
+        },
+        {
+            "numero": 7,
+            "status": true
+        },
+        {
+            "numero": 8,
+            "status": true
+        }
+    ],
+    "zonas":[
+        {
+            "numero": 1,
+            "voltagem": 9.99,
+            "sensorPar":{
+                "numero": 1,
+                "status": true
+            },
+            "sensorImpar":{
+                "numero": 2,
+                "status": true
+            }
+        },
+        {
+            "numero": 1,
+            "voltagem": 9.99,
+            "sensorPar":{
+                "numero": 1,
+                "status": true
+            },
+            "sensorImpar":{
+                "numero": 2,
+                "status": true
+            }
+        },
+        {
+            "numero": 1,
+            "voltagem": 9.99,
+            "sensorPar":{
+                "numero": 1,
+                "status": true
+            },
+            "sensorImpar":{
+                "numero": 2,
+                "status": true
+            }
+        },
+        {
+            "numero": 1,
+            "voltagem": 9.99,
+            "sensorPar":{
+                "numero": 1,
+                "status": true
+            },
+            "sensorImpar":{
+                "numero": 2,
+                "status": true
+            }
+        }
+    ]
+}

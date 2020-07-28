@@ -2,7 +2,7 @@
 
 ![v1.0](https://img.shields.io/badge/version-v1.0-red) 
 
-![Build Passing](https://img.shields.io/badge/build-passing-brightgreen) ![Docs 0%](https://img.shields.io/badge/docs-0%25-red) ![enter image description here](https://img.shields.io/badge/license-MIT-brightgreen) 
+![Build Passing](https://img.shields.io/badge/build-passing-brightgreen) ![Docs 3%](https://img.shields.io/badge/docs-3%25-red) ![enter image description here](https://img.shields.io/badge/license-MIT-brightgreen) 
 
 ![react](https://img.shields.io/badge/react-v16.13.1-green) ![express](https://img.shields.io/badge/express-v4.x-green) ![mongoDB](https://img.shields.io/badge/mongoDB-v4.2-green) 
 
