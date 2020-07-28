@@ -23,26 +23,27 @@ class Zone {
   Sensor* EvenSensor;
   short getPinNumber(void);
   void setPinNumber(const short);
-  short getNumber(void);
   void setNumber(const short);
   int getVoltageInt(void);
-  Voltage tempVoltage();
+  Voltage* tempVoltage;
 
  public:
   Zone(const short, const short);
-  String getStatusZone(void);
+  // String getStatusZone(void);
   Sensor* getOddSensor(void);
   Sensor* getEvenSensor(void);
   double getVoltage(void);
+  short getNumber(void);
 };
 
 /**
  * @brief Construct a new Zone:: Zone object
  * 
- * @param pin 
- * @param newNumber 
+ * @param pin Porta de entrada da zona
+ * @param newNumber Número da zona
  */
 Zone::Zone(const short pin, const short newNumber) {
+  tempVoltage = new Voltage();
   setPinNumber(pin);
   setNumber(newNumber);
   const short numberEven = getNumber() * 2;
@@ -98,16 +99,16 @@ int Zone::getVoltageInt(void) {
   return analogRead(getPinNumber());
 }
 
-/**
- * @brief Get the Status Zone object
- * 
- * @return String Status da zona
- */
-String Zone::getStatusZone(void) {
-  OddSensor->setStatus(tempVoltage().getOddSensorStatus(getVoltageInt()));
-  EvenSensor->setStatus(tempVoltage().getEvenSensorStatus(getVoltageInt()));
-  return tempVoltage().getStatusZone(getVoltageInt());
-}
+// /**
+//  * @brief Get the Status Zone object
+//  * 
+//  * @return String Status da zona
+//  */
+// String Zone::getStatusZone(void) {
+//   OddSensor->setStatus(tempVoltage->getOddSensorStatus(getVoltageInt()));
+//   EvenSensor->setStatus(tempVoltage->getEvenSensorStatus(getVoltageInt()));
+//   return tempVoltage->getStatusZone(getVoltageInt());
+// }
 
 /**
  * @brief Get the Odd Sensor Status object
@@ -115,7 +116,7 @@ String Zone::getStatusZone(void) {
  * @return Sensor* Sensor
  */
 Sensor* Zone::getOddSensor(void) {
-  OddSensor->setStatus(tempVoltage().getOddSensorStatus(getVoltageInt()));
+  OddSensor->setStatus(tempVoltage->getOddSensorStatus(getVoltageInt()));
   return OddSensor;
 }
 
@@ -125,7 +126,7 @@ Sensor* Zone::getOddSensor(void) {
  * @return Sensor* Sensor
  */
 Sensor* Zone::getEvenSensor(void) {
-  EvenSensor->setStatus(tempVoltage().getEvenSensorStatus(getVoltageInt()));
+  EvenSensor->setStatus(tempVoltage->getEvenSensorStatus(getVoltageInt()));
   return EvenSensor;
 }
 
@@ -135,7 +136,7 @@ Sensor* Zone::getEvenSensor(void) {
  * @return double Voltagem real da zona
  */
 double Zone::getVoltage(void) {
-  return tempVoltage().convertToVoltage(getVoltageInt());
+  return tempVoltage->convertToVoltage(getVoltageInt());
 }
 
 #endif

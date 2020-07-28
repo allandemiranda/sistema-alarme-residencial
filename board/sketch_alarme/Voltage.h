@@ -37,7 +37,7 @@ class Voltage {
   Voltage(const double, const double, const double, const double, const double, const double);
   bool getOddSensorStatus(const int);
   bool getEvenSensorStatus(const int);
-  String getStatusZone(const int);
+  // String getStatusZone(const int);
   double convertToVoltage(const int);
 };
 
@@ -106,80 +106,198 @@ bool Voltage::getEvenSensorStatus(const int voltageNow) {
   return true;
 }
 
+// /**
+//  * @brief Get the Status Zone object
+//  *
+//  * @param voltageNow Voltagem da zona
+//  * @return String Status real da voltagem na zona
+//  */
+// String Voltage::getStatusZone(const int voltageNow) {
+//   const double voltage = convertToVoltage(voltageNow);
+
+//   if (voltage == getNormalVoltageBothSensor()) {
+//     return "Voltagem esperada para ambos os sensores estarem fechados";
+//   }
+
+//   if (voltage == getNormalVoltageOddSensor()) {
+//     return "Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
+//   }
+
+//   if (voltage == getNormalVoltageEvenSensor()) {
+//     return "Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+//   }
+
+//   if (voltage == getNormalVoltageOffSensor()) {
+//     return "Voltagem esperada para ambos os sensores estarem abertos";
+//   }
+
+//   if (voltage > getNormalVoltageOddSensor()) {
+//     if (voltage <= (getNormalVoltageOddSensor() + getToleranceBetweenSensorVoltage())) {
+//       return "Sobre Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
+//     } else {
+//       if (voltage < (getNormalVoltageBothSensor() - getToleranceBetweenSensorVoltage())) {
+//         return "Voltagem da Zona fora do padrão, entre ÍMPAR e AMBOS";
+//       } else {
+//         if (voltage < getNormalVoltageBothSensor()) {
+//           return "Sub Voltagem esperada para ambos os sensores estarem fechados";
+//         } else {
+//           if (voltage <= (getNormalVoltageBothSensor() + getToleranceBetweenSensorVoltage())) {
+//             return "Sobre Voltagem esperada para ambos os sensores estarem fechados";
+//           } else {
+//             return "Sobre carga na zona";
+//           }
+//         }
+//       }
+//     }
+//   } else {
+//     if (voltage >= (getNormalVoltageOddSensor() - getToleranceBetweenSensorVoltage())) {
+//       return "Sub Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
+//     } else {
+//       if (voltage > (getNormalVoltageEvenSensor() + getToleranceBetweenSensorVoltage())) {
+//         return "Voltagem da Zona fora do padrão, entre PAR e ÍMPAR";
+//       } else {
+//         if (voltage > getNormalVoltageEvenSensor()) {
+//           return "Sobre Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+//         } else {
+//           if (voltage >= (getNormalVoltageEvenSensor() - getToleranceBetweenSensorVoltage())) {
+//             return "Sub Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
+//           } else {
+//             if (voltage > (getNormalVoltageOffSensor() + getToleranceBetweenSensorVoltage())) {
+//               return "Voltagem da Zona fora do padrão, entre OFF e PAR";
+//             } else {
+//               if (voltage > getNormalVoltageOffSensor()) {
+//                 return "Sobre Voltagem esperada para ambos os sensores estarem abertos";
+//               } else {
+//                 if ((voltage < getNormalVoltageOffSensor()) & (voltage <= 0)) {
+//                   return "Sub Voltagem esperada para ambos os sensores estarem abertos";
+//                 } else {
+//                   return "Erro ao coletar voltagem da Zona, menor de 0.00v";
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
 /**
- * @brief Get the Status Zone object
+ * @brief Set the Normal Voltage Both Sensor object
  * 
- * @param voltageNow Voltagem da zona
- * @return String Status real da voltagem na zona
+ * @param newVolt Nova voltagem
  */
-String Voltage::getStatusZone(const int voltageNow) {
-  const double voltage = convertToVoltage(voltageNow);
+void Voltage::setNormalVoltageBothSensor(const double newVolt) {
+  normalVoltageBothSensor = newVolt;
+}
 
-  if (voltage == getNormalVoltageBothSensor()) {
-    return "Voltagem esperada para ambos os sensores estarem fechados";
-  }
+/**
+ * @brief Set the Normal Voltage Odd Sensor object
+ * 
+ * @param newVolt Nova voltagem
+ */
+void Voltage::setNormalVoltageOddSensor(const double newVolt) {
+  normalVoltageOddSensor = newVolt;
+}
 
-  if (voltage == getNormalVoltageOddSensor()) {
-    return "Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
-  }
+/**
+ * @brief Set the Normal Voltage Even Sensor object
+ * 
+ * @param newVolt Nova voltagem
+ */
+void Voltage::setNormalVoltageEvenSensor(const double newVolt) {
+  normalVoltageEvenSensor = newVolt;
+}
 
-  if (voltage == getNormalVoltageEvenSensor()) {
-    return "Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
-  }
+/**
+ * @brief Set the Normal Voltage Off Sensor object
+ * 
+ * @param newVolt Nova voltagem
+ */
+void Voltage::setNormalVoltageOffSensor(const double newVolt) {
+  normalVoltageOffSensor = newVolt;
+}
 
-  if (voltage == getNormalVoltageOffSensor()) {
-    return "Voltagem esperada para ambos os sensores estarem abertos";
-  }
+/**
+ * @brief Set the Tolerance Between Sensor Voltage object
+ * 
+ * @param newVolt Nova voltagem
+ */
+void Voltage::setToleranceBetweenSensorVoltage(const double newVolt) {
+  toleranceBetweenSensorVoltage = newVolt;
+}
 
-  if (voltage > getNormalVoltageOddSensor()) {
-    if (voltage <= (getNormalVoltageOddSensor() + getToleranceBetweenSensorVoltage())) {
-      return "Sobre Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
-    } else {
-      if (voltage < (getNormalVoltageBothSensor() - getToleranceBetweenSensorVoltage())) {
-        return "Voltagem da Zona fora do padrão, entre ÍMPAR e AMBOS";
-      } else {
-        if (voltage < getNormalVoltageBothSensor()) {
-          return "Sub Voltagem esperada para ambos os sensores estarem fechados";
-        } else {
-          if (voltage <= (getNormalVoltageBothSensor() + getToleranceBetweenSensorVoltage())) {
-            return "Sobre Voltagem esperada para ambos os sensores estarem fechados";
-          } else {
-            return "Sobre carga na zona";
-          }
-        }
-      }
-    }
-  } else {
-    if (voltage >= (getNormalVoltageOddSensor() - getToleranceBetweenSensorVoltage())) {
-      return "Sub Voltagem esperada para somente o sensor ímpar está fechado (par aberto)";
-    } else {
-      if (voltage > (getNormalVoltageEvenSensor() + getToleranceBetweenSensorVoltage())) {
-        return "Voltagem da Zona fora do padrão, entre PAR e ÍMPAR";
-      } else {
-        if (voltage > getNormalVoltageEvenSensor()) {
-          return "Sobre Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
-        } else {
-          if (voltage >= (getNormalVoltageEvenSensor() - getToleranceBetweenSensorVoltage())) {
-            return "Sub Voltagem esperada para somente o sensor par está fechado (ímpar aberto)";
-          } else {
-            if (voltage > (getNormalVoltageOffSensor() + getToleranceBetweenSensorVoltage())) {
-              return "Voltagem da Zona fora do padrão, entre OFF e PAR";
-            } else {
-              if (voltage > getNormalVoltageOffSensor()) {
-                return "Sobre Voltagem esperada para ambos os sensores estarem abertos";
-              } else {
-                if ((voltage < getNormalVoltageOffSensor()) & (voltage <= 0)) {
-                  return "Sub Voltagem esperada para ambos os sensores estarem abertos";
-                } else {
-                  return "Erro ao coletar voltagem da Zona, menor de 0.00v";
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+/**
+ * @brief Set the Voltage Const object
+ * 
+ * @param newVolt Nova voltagem
+ */
+void Voltage::setVoltageConst(const double newVolt) {
+  voltageConst = newVolt;
+}
+
+/**
+ * @brief Get the Normal Voltage Both Sensor object
+ * 
+ * @return double Normal Voltage Both Sensor
+ */
+double Voltage::getNormalVoltageBothSensor(void) {
+  return normalVoltageBothSensor;
+}
+
+/**
+ * @brief Get the Normal Voltage Odd Sensor object
+ * 
+ * @return double Normal Voltage Odd Sensor
+ */
+double Voltage::getNormalVoltageOddSensor(void) {
+  return normalVoltageOddSensor;
+}
+
+/**
+ * @brief Get the Normal Voltage Even Sensor object
+ * 
+ * @return double Normal Voltage Even Sensor
+ */
+double Voltage::getNormalVoltageEvenSensor(void) {
+  return normalVoltageEvenSensor;
+}
+
+/**
+ * @brief Get the Normal Voltage Off Sensor object
+ * 
+ * @return double Normal Voltage Off Sensor
+ */
+double Voltage::getNormalVoltageOffSensor(void) {
+  return normalVoltageOffSensor;
+}
+
+/**
+ * @brief Get the Tolerance Between Sensor Voltage object
+ * 
+ * @return double Tolerance Between Sensor Voltage
+ */
+double Voltage::getToleranceBetweenSensorVoltage(void) {
+  return toleranceBetweenSensorVoltage;
+}
+
+/**
+ * @brief Get the Voltage Const object
+ * 
+ * @return double Voltage Const
+ */
+double Voltage::getVoltageConst(void) {
+  return voltageConst;
+}
+
+/**
+ * @brief Get the Convert To Voltage object
+ * 
+ * @param volt Voltagem em INT
+ * @return double Voltagem real
+ */
+double Voltage::convertToVoltage(const int volt) {
+  return volt * getVoltageConst();
 }
 
 #endif

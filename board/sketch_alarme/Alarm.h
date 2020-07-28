@@ -40,30 +40,14 @@ class Alarm {
  * @param pinControlNum Número da porta do controle
  */
 Alarm::Alarm(const short pinBellNum, const short pinControlNum) {
-  for (int i = 1; i <= 4; ++i) {
-    int analogPin;
-    switch (i) {
-      case 1:
-        analogPin = A1;
-        break;
-      case 2:
-        analogPin = A2;
-        break;
-      case 3:
-        analogPin = A3;
-        break;
-      case 4:
-        analogPin = A4;
-        break;
-      default:
-        analogPin = A0;
-        break;
-    }
-    zones[i] = new Zone(analogPin, i);
-  }
+  zones[0] = new Zone(A0, 1);
+  zones[1] = new Zone(A1, 2);
+  zones[2] = new Zone(A2, 3);
+  zones[3] = new Zone(A3, 4);
 
   bell = new Bell(pinBellNum);
   ledStatus = new LedStatus();
+  control = new Control(pinControlNum);
 }
 
 /**
