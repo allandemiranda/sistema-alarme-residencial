@@ -6,6 +6,6 @@ https://www.arduino.cc/reference/en/
 
 ## Documentação
 
-![Docs 30%](https://img.shields.io/badge/docs-30%25-yellow)
+![Docs 70%](https://img.shields.io/badge/docs-70%25-green)
 
 [doc/html/index.html](doc/index.html)
