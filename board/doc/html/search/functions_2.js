@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['deactivatebuzzer',['deactivateBuzzer',['../sketch__alarme_8cpp.html#a342183f00564dc4e384219d80075b53b',1,'sketch_alarme.ino']]]
+  ['control',['Control',['../class_control.html#a92a2bd9b3630082fead59b390b8d30e5',1,'Control']]],
+  ['converttovoltage',['convertToVoltage',['../class_voltage.html#a9f4477e8edb78357823300ab42777c89',1,'Voltage']]]
 ];

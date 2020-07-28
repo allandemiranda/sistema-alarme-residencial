@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['activatebuzzer',['activateBuzzer',['../sketch__alarme_8cpp.html#acc91b0a4c1a490a0a33f47ecb18a94b6',1,'sketch_alarme.ino']]]
+  ['alarm',['Alarm',['../class_alarm.html#a0823a201c7a8e92ae3c6e2f674e5dfa3',1,'Alarm']]]
 ];

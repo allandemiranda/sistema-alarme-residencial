@@ -12,17 +12,34 @@
 #ifndef SENSOR_H_
 #define SENSOR_H_
 
+#include "Led.h"
+
 class Sensor {
  private:
-  bool status;
+  bool status;     //! Status do sensor
+  short number;    //! Número do sensor
+  Led* ledPainel;  //! Led do sensor no painel
+  void setNumber(const short);
 
  public:
-  Sensor(const bool);
+  Sensor(const short, const bool);
   bool getStatus(void);
   void setStatus(const bool);
+  short getNumber(void);
 };
 
-Sensor::Sensor(const bool nowStatus = false) {
+/**
+ * @brief Construct a new Sensor:: Sensor object
+ * 
+ * @param newNumber Número do sensor
+ * @param newLed Led do painel referente ao sensor
+ * @param nowStatus Status atual do sensor
+ */
+Sensor::Sensor(const short newNumber, const bool nowStatus = false) {
+  setNumber(newNumber);
+  setStatus(nowStatus);
+  const short ledNumberNow = newNumber + 1;
+  ledPainel = new Led(ledNumberNow, getStatus());
 }
 
 /**
@@ -42,6 +59,28 @@ bool Sensor::getStatus(void) {
  */
 void Sensor::setStatus(const bool newStatus) {
   status = newStatus;
+  if (getStatus()) {
+    ledPainel->turnOn();
+  } else {
+    ledPainel->turnOff();
+  }
+}
+
+/**
+ * @brief Get the Number object
+ * 
+ * @return short Número do sensor
+ */
+short Sensor::getNumber(void) {
+  return number;
+}
+
+/**
+ * @brief Set the Number object
+ * 
+ */
+void Sensor::setNumber(const short newNumber) {
+  number = newNumber;
 }
 
 #endif

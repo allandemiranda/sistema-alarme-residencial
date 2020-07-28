@@ -35,8 +35,12 @@ class Led {
  */
 Led::Led(const short pin, const bool statusNow = false) {
   setPinNumber(pin);
-  setStatus(statusNow);
   pinMode(getPinNumber(), OUTPUT);
+  if (statusNow) {
+    turnOn();
+  } else {
+    turnOff();
+  }
 }
 
 /**

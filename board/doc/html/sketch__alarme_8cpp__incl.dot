@@ -1,0 +1,25 @@
+digraph "/home/allanmiranda/Documentos/sistema-alarme-residencial/board/sketch_alarme/sketch_alarme.ino"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="/home/allanmiranda\l/Documentos/sistema\l-alarme-residencial/board\l/sketch_alarme/sketch_alarme.ino",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Alarm.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_alarm_8h.html",tooltip="Contem a classe que gerencia o alarme. "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Bell.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_bell_8h.html",tooltip="Contem a classe que gerencia a sirene. "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Control.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_control_8h.html",tooltip="Contem a classe que gerencia o controle de acionamento do alarme. "];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="LedStatus.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_led_status_8h.html",tooltip="Contem a classe que gerencia o alarme. "];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Led.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_led_8h.html",tooltip="Contem a classe que gerencia o led. "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Zone.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_zone_8h.html",tooltip="Contem a classe que gerencia o sensor. "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Sensor.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_sensor_8h.html",tooltip="Contem a classe que gerencia o sensor. "];
+  Node7 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Voltage.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_voltage_8h.html",tooltip="Contem a classe que gerencia a voltagem dos sensores. "];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="ArduinoJson-v6.15.2.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_arduino_json-v6_815_82_8h.html"];
+}
