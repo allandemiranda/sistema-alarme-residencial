@@ -1,0 +1,9 @@
+{
+  "url": "mongodb://localhost:27017/alarme",
+  "tegs": {
+    "useUnifiedTopology": true,
+    "useNewUrlParser": true,
+    "useCreateIndex": true,
+    "useFindAndModify": false
+  }
+}
