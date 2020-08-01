@@ -24,6 +24,7 @@ class LedStatus {
   Led* getLed(void);
   String getStatus(void);
   void setStatus(const short);
+  short getStatusNumber(void);
 };
 
 /**
@@ -87,6 +88,15 @@ String LedStatus::getStatus(void) {
       statusLed->turnOff();
       return "Alarme erro";
   }
+}
+
+/**
+ * @brief Get the Status Number object
+ * 
+ * @return short Número do status do led
+ */
+short LedStatus::getStatusNumber(void) {
+  return status;
 }
 
 #endif
