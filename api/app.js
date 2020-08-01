@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 require("./routes/auth")(app);
-require("./routes/projects")(app);
+require("./routes/alarm")(app);
 
 app.use(function (req, res, next) {
   next(createError(404));
