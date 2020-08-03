@@ -19,6 +19,8 @@ class Sensor {
   bool status;     //! Status do sensor
   short number;    //! Número do sensor
   Led* ledPainel;  //! Led do sensor no painel
+  bool active;     //! Se está ativo
+  bool fired;      //! Se foi disparado
   void setNumber(const short);
 
  public:
@@ -26,6 +28,10 @@ class Sensor {
   bool getStatus(void);
   void setStatus(const bool);
   short getNumber(void);
+  void setActive(bool);
+  bool getActive(void);
+  void setFired(bool);
+  bool getFired(void);
 };
 
 /**
@@ -40,6 +46,8 @@ Sensor::Sensor(const short newNumber, const bool nowStatus = false) {
   setStatus(nowStatus);
   const short ledNumberNow = newNumber + 1;
   ledPainel = new Led(ledNumberNow, getStatus());
+  setActive(false);
+  setFired(false);
 }
 
 /**
@@ -81,6 +89,44 @@ short Sensor::getNumber(void) {
  */
 void Sensor::setNumber(const short newNumber) {
   number = newNumber;
+}
+
+/**
+ * @brief Set the Active object
+ * 
+ * @param flag Se o sensor está ativo ao armar
+ */
+void Sensor::setActive(bool flag) {
+  active = flag;
+}
+
+/**
+ * @brief Get the Active object
+ * 
+ * @return true Se o sensor estiver ativo
+ * @return false Se o sensor estiver bypassado
+ */
+bool Sensor::getActive(void) {
+  return active;
+}
+
+/**
+ * @brief Set the Fired object
+ * 
+ * @param flag Se o Sensor foi disparado
+ */
+void Sensor::setFired(bool flag){
+  fired = flag;
+}
+  
+/**
+ * @brief Get the Fired object
+ * 
+ * @return true Se o sensor disparou quando estava armado da última vez
+ * @return false Se o sensor não disparou quando estava armado da última vez
+ */
+bool Sensor::getFired(void){
+  return fired;
 }
 
 #endif

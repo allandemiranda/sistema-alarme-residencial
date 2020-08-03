@@ -30,6 +30,8 @@ void setup() {
   }
 
   controleStatus = false;
+
+  alarm.getLedStatus()->setStatus(1);
 }
 
 /**
@@ -57,43 +59,35 @@ void sendStatus(void) {
 
   JsonObject sensores_0 = sensores.createNestedObject();
   sensores_0["numero"] = 1;
-  sensoresStatus[0] = alarm.getSensorSatus(1);
-  sensores_0["status"] = sensoresStatus[0];
+  sensores_0["status"] = alarm.getSensorSatus(1);
 
   JsonObject sensores_1 = sensores.createNestedObject();
   sensores_1["numero"] = 2;
-  sensoresStatus[1] = alarm.getSensorSatus(2);
-  sensores_1["status"] = sensoresStatus[1];
+  sensores_1["status"] = alarm.getSensorSatus(2);
 
   JsonObject sensores_2 = sensores.createNestedObject();
   sensores_2["numero"] = 3;
-  sensoresStatus[2] = alarm.getSensorSatus(3);
-  sensores_2["status"] = sensoresStatus[2];
+  sensores_2["status"] = alarm.getSensorSatus(3);
 
   JsonObject sensores_3 = sensores.createNestedObject();
   sensores_3["numero"] = 4;
-  sensoresStatus[3] = alarm.getSensorSatus(4);
-  sensores_3["status"] = sensoresStatus[3];
+  sensores_3["status"] = alarm.getSensorSatus(4);
 
   JsonObject sensores_4 = sensores.createNestedObject();
   sensores_4["numero"] = 5;
-  sensoresStatus[4] = alarm.getSensorSatus(5);
-  sensores_4["status"] = sensoresStatus[4];
+  sensores_4["status"] = alarm.getSensorSatus(5);
 
   JsonObject sensores_5 = sensores.createNestedObject();
   sensores_5["numero"] = 6;
-  sensoresStatus[5] = alarm.getSensorSatus(6);
-  sensores_5["status"] = sensoresStatus[5];
+  sensores_5["status"] = alarm.getSensorSatus(6);
 
   JsonObject sensores_6 = sensores.createNestedObject();
   sensores_6["numero"] = 7;
-  sensoresStatus[6] = alarm.getSensorSatus(7);
-  sensores_6["status"] = sensoresStatus[6];
+  sensores_6["status"] = alarm.getSensorSatus(7);
 
   JsonObject sensores_7 = sensores.createNestedObject();
   sensores_7["numero"] = 8;
-  sensoresStatus[7] = alarm.getSensorSatus(8);
-  sensores_7["status"] = sensoresStatus[7];
+  sensores_7["status"] = alarm.getSensorSatus(8);
 
   // Vetor de Zonas
   JsonArray zonas = doc.createNestedArray("zonas");
