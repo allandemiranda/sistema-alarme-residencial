@@ -1,95 +1,145 @@
 {
-    "sirene":{
+  "sirene": {
+    "status": true
+  },
+  "controle": {
+    "status": false
+  },
+  "ledStatus": {
+    "status": "uma msg aqui"
+  },
+  "ultimosDisparados": [
+    {
+      "numero": 1,
+      "disparado": true
+    },
+    {
+      "numero": 2,
+      "disparado": true
+    },
+    {
+      "numero": 3,
+      "disparado": true
+    },
+    {
+      "numero": 4,
+      "disparado": true
+    },
+    {
+      "numero": 5,
+      "disparado": true
+    },
+    {
+      "numero": 6,
+      "disparado": true
+    },
+    {
+      "numero": 7,
+      "disparado": true
+    },
+    {
+      "numero": 8,
+      "disparado": true
+    }
+  ],
+  "sensores": [
+    {
+      "numero": 1,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 2,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 3,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 4,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 5,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 6,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 7,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    },
+    {
+      "numero": 8,
+      "status": true,
+      "ativo": true,
+      "disparado": true
+    }
+  ],
+  "zonas": [
+    {
+      "numero": 1,
+      "voltagem": 9.99,
+      "sensorPar": {
+        "numero": 1,
         "status": true
+      },
+      "sensorImpar": {
+        "numero": 2,
+        "status": true
+      }
     },
-    "controle":{
-        "status": false
+    {
+      "numero": 1,
+      "voltagem": 9.99,
+      "sensorPar": {
+        "numero": 1,
+        "status": true
+      },
+      "sensorImpar": {
+        "numero": 2,
+        "status": true
+      }
     },
-    "ledStatus":{
-        "status": "uma msg aqui"
+    {
+      "numero": 1,
+      "voltagem": 9.99,
+      "sensorPar": {
+        "numero": 1,
+        "status": true
+      },
+      "sensorImpar": {
+        "numero": 2,
+        "status": true
+      }
     },
-    "sensores": [
-        {
-            "numero": 1,
-            "status": true
-        },
-        {
-            "numero": 2,
-            "status": true
-        },
-        {
-            "numero": 3,
-            "status": true
-        },
-        {
-            "numero": 4,
-            "status": true
-        },
-        {
-            "numero": 5,
-            "status": true
-        },
-        {
-            "numero": 6,
-            "status": true
-        },
-        {
-            "numero": 7,
-            "status": true
-        },
-        {
-            "numero": 8,
-            "status": true
-        }
-    ],
-    "zonas":[
-        {
-            "numero": 1,
-            "voltagem": 9.99,
-            "sensorPar":{
-                "numero": 1,
-                "status": true
-            },
-            "sensorImpar":{
-                "numero": 2,
-                "status": true
-            }
-        },
-        {
-            "numero": 1,
-            "voltagem": 9.99,
-            "sensorPar":{
-                "numero": 1,
-                "status": true
-            },
-            "sensorImpar":{
-                "numero": 2,
-                "status": true
-            }
-        },
-        {
-            "numero": 1,
-            "voltagem": 9.99,
-            "sensorPar":{
-                "numero": 1,
-                "status": true
-            },
-            "sensorImpar":{
-                "numero": 2,
-                "status": true
-            }
-        },
-        {
-            "numero": 1,
-            "voltagem": 9.99,
-            "sensorPar":{
-                "numero": 1,
-                "status": true
-            },
-            "sensorImpar":{
-                "numero": 2,
-                "status": true
-            }
-        }
-    ]
+    {
+      "numero": 1,
+      "voltagem": 9.99,
+      "sensorPar": {
+        "numero": 1,
+        "status": true
+      },
+      "sensorImpar": {
+        "numero": 2,
+        "status": true
+      }
+    }
+  ]
 }

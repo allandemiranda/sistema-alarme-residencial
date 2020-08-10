@@ -69,6 +69,9 @@ void Sensor::setStatus(const bool newStatus) {
   status = newStatus;
   if (getStatus()) {
     ledPainel->turnOn();
+    if (getActive()) {
+      setFired(true);
+    }
   } else {
     ledPainel->turnOff();
   }
@@ -115,17 +118,17 @@ bool Sensor::getActive(void) {
  * 
  * @param flag Se o Sensor foi disparado
  */
-void Sensor::setFired(bool flag){
+void Sensor::setFired(bool flag) {
   fired = flag;
 }
-  
+
 /**
  * @brief Get the Fired object
  * 
  * @return true Se o sensor disparou quando estava armado da última vez
  * @return false Se o sensor não disparou quando estava armado da última vez
  */
-bool Sensor::getFired(void){
+bool Sensor::getFired(void) {
   return fired;
 }
 

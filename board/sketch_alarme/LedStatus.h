@@ -96,6 +96,7 @@ String LedStatus::getStatus(void) {
  * @return short Número do status do led
  */
 short LedStatus::getStatusNumber(void) {
+  getStatus();
   return status;
 }
 

@@ -26,7 +26,7 @@ class Alarm {
 
  public:
   Alarm(const short, const short);
-  bool getSensorSatus(const short);
+  Sensor* getSensor(const short);
   Zone* getZone(const short);
   Bell* getBell(void);
   Control* getControl(void);
@@ -57,22 +57,21 @@ Alarm::Alarm(const short pinBellNum, const short pinControlNum) {
  * @return true Sensor aberto
  * @return false Sensor fechado
  */
-bool Alarm::getSensorSatus(const short num) {
+Sensor* Alarm::getSensor(const short num) {
   if (num % 2 == 0) {
     for (int i = 0; i < 4; ++i) {
       if (zones[i]->getEvenSensor()->getNumber() == num) {
-        return zones[i]->getEvenSensor()->getStatus();
+        return zones[i]->getEvenSensor();
       }
     }
-    return true;
   } else {
     for (int i = 0; i < 4; ++i) {
       if (zones[i]->getOddSensor()->getNumber() == num) {
-        return zones[i]->getOddSensor()->getStatus();
+        return zones[i]->getOddSensor();
       }
     }
-    return true;
   }
+  return zones[0]->getOddSensor();
 }
 
 /**

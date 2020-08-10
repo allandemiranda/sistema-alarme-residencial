@@ -49,7 +49,7 @@ router.post("/register", async (req, res) => {
     } else {
       const user = await User.create(req.body);
       user.password = undefined;
-      return res.status(202).send({ user });
+      return res.status(201).send({ user });
     }
   } catch (error) {
     return res.status(400).send({

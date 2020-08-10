@@ -22,7 +22,47 @@ router.get("/", (req, res) => {
 
 router.get("/teste/:id", async (req, res, next) => {
   try {
-    port.write(req.params.id);
+    if(req.params.id == 1){
+      port.write("a");
+    }
+    if(req.params.id == 2){
+      port.write("b");
+    }
+    if(req.params.id == 3){
+      port.write("c");
+    }
+    if(req.params.id == 4){
+      port.write("d");
+    }
+    if(req.params.id == 5){
+      port.write("e");
+    }
+    if(req.params.id == 6){
+      port.write("f");
+    }
+    if(req.params.id == 7){
+      port.write("g");
+    }
+    if(req.params.id == 8){
+      port.write("h");
+    }
+    if(req.params.id == 9){
+      port.write("i");
+    }
+    if(req.params.id == 10){
+      port.write("j");
+    }
+    if(req.params.id == 11){
+      port.write("k");
+    }
+    if(req.params.id == 12){
+      port.write("l");
+    }
+    if(req.params.id == 13){
+      port.write("m");
+    }
+
+    
 
     teste = {};
 
